@@ -1,0 +1,45 @@
+﻿@page
+@model RazorCrud.Pages.IndexModel
+@{
+}
+
+<h1>Lista de produtos</h1>
+
+<div class="container">
+    <ul>
+        @if (Model.Products.Any())
+        {
+            @foreach (var prod in Model.Products)
+            {
+                <li class="list-item">
+                    <div>
+                        <p>@prod.Name</p>
+                    </div>
+                    <div>
+                        <p>@prod.Price.ToString("C", new CultureInfo("pt-AO"))</p>
+                    </div>
+                    <div>
+                        <p>@prod.Quantity @((prod.Quantity > 1) ? "unidades" : "unidade")</p>
+                    </div>
+                    <div class="actions">
+                        <button>
+                            <a asp-page="/EditProduct" asp-route-prodId="@prod.Id">
+                                Editar
+                            </a>
+                        </button>
+                        <button>
+                            <a asp-page="DeleteProduct" asp-route-prodId="@prod.Id">
+                                Excluir
+                            </a>
+                        </button>
+                    </div>
+                </li>
+            }
+        }
+        else
+        {
+            <p class="info-text">Nenhum produto cadastrado.</p>
+        }
+    </ul>
+
+</div>

@@ -1,0 +1,48 @@
+﻿
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;    
+    height: 50vh;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    width: 100%;
+}
+
+.form-group label {
+    font-size: 1.4rem;
+}
+
+.form-group input {
+    width: 100%;
+    border: none;
+    border-radius: 0.8rem;
+    outline: none;
+    font-size: 1.6rem;
+    font-weight: 600;
+    padding: 0.8rem 1.2rem;
+    color: #000;
+    background-color: gainsboro;
+}
+
+.form-group input:focus {
+    outline: 3px solid mediumpurple;
+}
+
+input[type='submit'] {
+    margin: auto;
+    padding: 0.9rem 3rem;
+    border-radius: 0.8rem;
+    background-color: mediumpurple;
+    color: #fff;
+    font-size: 1.6rem;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    align-self: center;
+}

@@ -1,0 +1,31 @@
+﻿@page "/cadastrarprodutos"
+@using RazorCrud.Models
+@model RazorCrud.Pages.RegisterProductsModel
+@{
+}
+
+<h1>Cadastre um novo produto</h1>
+
+<div class="container medium-container">
+    <form id="form" method="post">
+        <div class="form-group">
+            <label asp-for="product.Name">Nome do produto:</label>
+            <input type="text" asp-for="product.Name" autofocus/>
+            <span class="error-message" asp-validation-for="product.Name"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="product.Price">Preço:</label>
+            <input type="number" asp-for="product.Price" />
+            <span class="error-message" asp-validation-for="product.Price"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="product.Quantity">Quantidade:</label>
+            <input type="number" asp-for="product.Quantity" />
+            <span class="error-message" asp-validation-for="product.Quantity"></span>
+        </div>
+        <div class="form-group">
+            <input form="form" type="submit" value="Cadastrar" />
+        </div>
+    </form>
+
+</div>

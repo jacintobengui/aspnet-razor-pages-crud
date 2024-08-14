@@ -1,0 +1,33 @@
+﻿@page "/excluir/{prodId}"
+@using RazorCrud.Models
+@model RazorCrud.Pages.DeleteProductModel
+
+<a asp-page="Index">
+    <img src="~/img/go_back.png" class="go-back"/>
+</a>
+
+<h1>Deseja excluir o produto?</h1>
+
+<div class="container medium-container">
+    <form id="form" method="post">
+        <div class="form-group">
+            <label asp-for="Product.Name">Nome do produto:</label>
+            <input type="text" asp-for="Product.Name" readonly/>
+            <span class="error-message" asp-validation-for="Product.Name"></span>
+        </div>
+        <div class="form-group">
+            <label>Preço:</label>
+            <input type="number" asp-for="Product.Price" readonly/>
+            <span class="error-message" asp-validation-for="Product.Price"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Product.Quantity">Quantidade:</label>
+            <input type="number" asp-for="Product.Quantity" readonly/>
+            <span class="error-message" asp-validation-for="Product.Quantity"></span>
+        </div>
+        <div class="form-group">
+            <input form="form" style="background-color: mediumvioletred" type="submit" value="Excluir" />
+        </div>
+    </form>
+
+</div>
