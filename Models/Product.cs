@@ -19,6 +19,8 @@ namespace RazorCrud.Models
 
         public DateTime CreatedDate { get; init; }
 
+        public Guid UserId { get; set; }
+
         public Product()
         {
             Id = Guid.NewGuid();

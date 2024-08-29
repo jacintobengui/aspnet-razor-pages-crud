@@ -1,5 +1,5 @@
-﻿@page
-@model RazorCrud.Pages.IndexModel
+﻿@page "/"
+@model IndexModel
 @{
 }
 
@@ -23,7 +23,7 @@
                     </div>
                     <div class="actions">
                         <button>
-                            <a asp-page="/EditProduct" asp-route-prodId="@prod.Id">
+                            <a asp-page="EditProduct" asp-route-prodId="@prod.Id">
                                 Editar
                             </a>
                         </button>

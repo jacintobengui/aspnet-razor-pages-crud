@@ -1,40 +1,52 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using RazorCrud.DataBase;
+using Microsoft.EntityFrameworkCore;
+using RazorCrud.Data;
 using RazorCrud.Models;
+using RazorCrud.Services;
 
 namespace RazorCrud.Pages
 {
-    public class DeleteProductModel : PageModel
+    [Authorize(Roles = "Admin")]
+    public class DeleteProductModel(IProductService productService) : PageModel
     {
+        
         [BindProperty]
         public Product Product { get; set; } = new();
 
-        public IActionResult OnGet([FromRoute] string prodId)
+        public async Task<IActionResult> OnGet([FromRoute] string prodId)
         {
-            Guid productId = new Guid(prodId);
+            if (!String.IsNullOrEmpty(prodId))
+            {
+                var product = await productService.GetProductById(new Guid(prodId));
 
-            if(productId == Guid.Empty)
+                if (product != null)
+                {
+                    Product.Id = product.Id;
+                    Product.Name = product.Name;
+                    Product.Price = product.Price;
+                    Product.Quantity = product.Quantity;
+                }
+            }
+            else
+            {
                 return NotFound();
-
-            var product = Database.Products
-                .FirstOrDefault(x => x.Id == productId);
-
-            Product.Id = product.Id;
-            Product.Name = product.Name;
-            Product.Price = product.Price;
-            Product.Quantity = product.Quantity;
+            }
 
             return Page();
         }
 
-        public IActionResult OnPost([FromRoute] string prodId)
+        public async Task OnPost([FromRoute] string prodId)
         {
-            var product = Database.Products
-                .FirstOrDefault(x => x.Id == new Guid(prodId));
+            await productService.DeleteProduct(new Guid(prodId));
 
-            Database.Products.Remove(product!);
+            ViewData["AlertDeletion"] = "Produto excluído com sucesso!";
+        }
 
+        public IActionResult OnPostCloseAlert()
+        {
+            ViewData["AlertDeletion"] = null;
             return RedirectToPage("Index");
         }
     }

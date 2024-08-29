@@ -1,6 +1,10 @@
 ﻿@import 'Index.css';
-@import 'RegisterProducts.css';
+@import 'Forms.css';
 @import 'EditProduct.css';
+
+:root {
+    font-size: 62.5%;
+}
 
 * {
     margin: 0;
@@ -9,11 +13,9 @@
     font-family: sans-serif;
     color: #fff;
     text-decoration: none;
+    font-size: 1.6rem;
 }
 
-:root {
-    font-size: 62.5%;
-}
 
 h1 {
     font-size: 2rem;
@@ -58,17 +60,25 @@ main {
     padding: 4rem;
 }
 
+.container {
+    margin: 2rem;
+    padding: 2rem;
+    width: 100%;
+    border-radius: 1.6rem;
+    box-shadow: 0 0 3px 3px mediumpurple;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-height: 50vh;
+}
+
+
 footer {
     box-shadow: 0 0 3px 3px mediumpurple;
     height: 6rem;
     display: flex;
     align-items: center;
     justify-content:center;
-}
-
-
-.medium-container {
-    max-width: 50vw;
 }
 
 .list-item > div {
@@ -80,6 +90,31 @@ footer {
     top: 7.5rem;
     left: 4rem;
     width: 5rem;
+}
+
+.alert {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.2rem;
+    padding-left: 2.6rem;
+    background-color: mediumpurple;
+    border-radius: 1.2rem;
+    width: 100%;
+    max-width: 600px;
+    margin-bottom: 1.2rem;
+}
+
+.alert button {
+    border: none;
+    border-radius: 0.6rem;
+    padding: 1rem 1.4rem;
+    font-weight: bold;
+    color: #1d1d1d;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    background-color: transparent;
 }
 
 @media (max-width: 730px) {

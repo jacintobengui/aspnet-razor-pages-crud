@@ -1,24 +1,11 @@
-﻿
-.container {
-    margin-top: 2rem;
-    padding: 2rem;
-    width: 100%;
-    border-radius: 1.6rem;
-    box-shadow: 0 0 3px 3px mediumpurple;
+﻿.container ul {
+    list-style: none;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    max-height: 50vh;
+    gap: 1.6rem;
+    height: 100%;
+    overflow-y: auto;
 }
-
-    .container ul {
-        list-style: none;
-        display: flex;
-        flex-direction: column;
-        gap: 1.6rem;
-        height: 100%;
-        overflow-y: auto;
-    }
 
 .list-item {
     box-shadow: 0px 1px 1px mediumpurple;
@@ -30,11 +17,11 @@
     padding: 0.8rem 1.2rem;
 }
 
-.list-item > div {
-    min-width: 200px;
-    width: 25%;
-    text-align: center;
-}
+    .list-item > div {
+        min-width: 200px;
+        width: 25%;
+        text-align: center;
+    }
 
 .actions button {
     background-color: mediumpurple;

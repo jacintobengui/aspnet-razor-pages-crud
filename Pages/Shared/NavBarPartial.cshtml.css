@@ -57,14 +57,14 @@
 
     .mobile-menu .nav-list ul {
         flex-direction: column;
+        padding: 0px 3rem;
+        gap: 20px;
     }
 
         .mobile-menu .nav-list ul li {
-            margin: auto;
-            /*box-shadow: 0px 0px 20px 3px mediumpurple;*/
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            text-align: center;
         }
-
-    header {
-        background-color: red;
-    }
 }

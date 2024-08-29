@@ -1,0 +1,45 @@
+﻿@page "/Account/SignIn"
+@model SignInModel
+@{
+}
+
+<h1>
+    Junte-se a nós, registre-se!
+</h1>
+
+<form class="form" method="post">
+
+    <div class="form-group">
+        <label asp-for="User.UserName">Nome de usuário:</label>
+        <input asp-for="User.UserName" type="text" />
+        <span asp-validation-for="User.UserName"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="User.Email">E-mail:</label>
+        <input asp-for="User.Email" type="email" />
+        <span asp-validation-for="User.Email"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="User.Password">Senha:</label>
+        <input asp-for="User.Password" type="password" />
+        <span asp-validation-for="User.Password"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="User.ConfirmPassword">Confirmar senha:</label>
+        <input asp-for="User.ConfirmPassword" type="password" />
+        <span asp-validation-for="User.ConfirmPassword"></span>
+    </div>
+
+    <div class="form-group">
+        <input type="submit" value="Registrar" />
+    </div>
+</form>
+
+<p class="action-link">
+    Já tem conta?
+    <a asp-page="Login">Entrar</a>
+</p>
+

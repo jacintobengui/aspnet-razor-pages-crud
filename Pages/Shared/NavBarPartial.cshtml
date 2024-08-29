@@ -1,16 +1,29 @@
-﻿<nav class="nav-bar">
+﻿@inject SignInManager<IdentityUser> SignInManager;
+
+<nav class="nav-bar">
     <div class="logo">
         <h1>CRUD</h1>
     </div>
 
     <div class="nav-list">
         <ul>
-            <li class="nav-item">
-                <a class="nav-link" asp-page="Index">Ver produtos</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" asp-page="RegisterProducts">Cadastrar produtos</a>
-            </li>
+            @if (SignInManager.IsSignedIn(User))
+            {
+                <li class="nav-item">
+                    <a class="nav-link" asp-page="Index">Ver produtos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-page="RegisterProducts">Cadastrar produtos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-page="Logout">Perfil</a>                  
+                </li>
+            } else
+            {
+                <li class="nav-item">
+                    <a class="nav-link" asp-page="Login">Entrar</a>
+                </li>
+            }
         </ul>
     </div>
 
@@ -24,12 +37,24 @@
 <div class="mobile-menu">
     <div class="nav-list">
         <ul>
-            <li class="nav-item">
-                <a class="nav-link" asp-page="Index">Ver produtos</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" asp-page="RegisterProducts">Cadastrar produtos</a>
-            </li>
+            @if (SignInManager.IsSignedIn(User))
+            {
+                <li class="nav-item">
+                    <a class="nav-link" asp-page="Index">Ver produtos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-page="RegisterProducts">Cadastrar produtos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-page="Logout">Perfil</a>
+                </li>
+            }
+            else
+            {
+                <li class="nav-item">
+                    <a class="nav-link" asp-page="Login">Entrar</a>
+                </li>
+            }
         </ul>
     </div>
 </div>

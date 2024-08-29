@@ -1,36 +1,44 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using RazorCrud.Data;
 using RazorCrud.Models;
-using RazorCrud.DataBase;
+using RazorCrud.Services;
+using System.Security.Claims;
 
 namespace RazorCrud.Pages
 {
-    public class RegisterProductsModel : PageModel
+    //[Authorize(Roles = "User, Gerente, Admin")]
+    [Authorize(Policy = "RequireUserGerenteAdminRoles")]
+    public class RegisterProductsModel(IProductService productService) : PageModel
     {
         public void OnGet()
         {
         }
 
         [BindProperty]
-        public Product product { get; set; } = default!;
+        public Product product { get; set; } = new();
 
-        public IActionResult OnPost(Product product)
+        public async Task<IActionResult> OnPost(Product product)
         {
 
             if (ModelState.IsValid)
             {
-                Product newProd = new()
-                {
-                    Name = product.Name,
-                    Price = product.Price,
-                    Quantity = product.Quantity
-                };
+                product.UserId = new Guid(User.FindFirst(ClaimTypes.NameIdentifier)!.Value);
 
-                Database.Products.Add(newProd);
+                await productService.CreateProduct(product);
+                ViewData["AlertCreation"] = "Produto cadastrado com sucesso!";
+                return Page();
             }
 
-            return RedirectToPage("Index");
+            return Page();
+        }
+
+        public void OnPostCloseAlert()
+        {
+            ViewData["AlertCreation"] = null;
         }
     }
-
 }
+
+

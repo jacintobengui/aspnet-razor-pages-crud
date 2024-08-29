@@ -1,16 +1,21 @@
 ﻿
-form {
+.form {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;    
-    height: 50vh;
+    justify-content: center;
+    gap: 1.6rem;
+    margin: 2rem;
+    padding: 2rem;
+    border-radius: 1.6rem;
+    box-shadow: 0 0 3px 3px mediumpurple;
+    width: 340px;
 }
 
 .form-group {
     display: flex;
     flex-direction: column;
-    gap: 4px;
+    gap: 6px;
     width: 100%;
 }
 
@@ -25,13 +30,26 @@ form {
     outline: none;
     font-size: 1.6rem;
     font-weight: 600;
-    padding: 0.8rem 1.2rem;
-    color: #000;
+    padding: 1.2rem;
+    color: #1d1d1d;
     background-color: gainsboro;
 }
 
 .form-group input:focus {
     outline: 3px solid mediumpurple;
+}
+
+.form-check {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    gap: 1.2rem;
+}
+
+input[type='checkbox'] {
+    width: 20px;
+    height: 20px;
 }
 
 input[type='submit'] {
@@ -44,5 +62,21 @@ input[type='submit'] {
     font-weight: 600;
     border: none;
     cursor: pointer;
-    align-self: center;
+}
+
+.action-link {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+.action-link a {
+    color: mediumpurple;
+    font-weight: 600;
+}
+
+@media screen and (max-width: 320px) {
+    form {
+        width: 90vw;
+    }
 }
